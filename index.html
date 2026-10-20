@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f0e7">
+  <meta name="description" content="Grace & Growth is a gentle self-care dashboard for building healthy habits, nurturing self-esteem, and growing in faith.">
+  <title>Grace & Growth | Your Gentle Space</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Grace and Growth home">
+      <span class="brand-icon">✿</span>
+      <span>grace <span class="amp">&</span> growth</span>
+    </a>
+    <button id="themeToggle" class="theme-toggle" type="button"
+      aria-label="Switch theme">☾ <span>Focus mode</span></button>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <p class="eyebrow">YOUR PERSONAL WELLNESS SPACE</p>
+      <h1>A little progress<br>is still <em>progress.</em></h1>
+      <p class="welcome-text">
+        Take a breath. Give yourself grace. Grow at your own pace.
+      </p>
+      <div class="verse-banner" aria-live="polite">
+        <span class="sparkle">✧</span>
+        <p id="dailyQuote">You are fearfully and wonderfully made. — Psalm 139:14</p>
+        <button id="nextQuote" aria-label="Next affirmation or verse"
+          type="button">↗</button>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Your daily progress">
+      <article class="stat-card">
+        <span class="stat-icon">🌱</span>
+        <p>Today's progress</p>
+        <h2 id="progressNumber">0%</h2>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+        <small id="taskSummary">0 of 0 tasks completed</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon">☀</span>
+        <p>Growth streak</p>
+        <h2><span id="streakNumber">0</span> days</h2>
+        <small>One day at a time</small>
+        <button id="checkInBtn" class="small-button" type="button">
+          Check in today ♡
+        </button>
+      </article>
+    </section>
+
+    <nav class="tabs" aria-label="Dashboard navigation">
+      <button class="tab active" data-tab="tasks" type="button">✧ My day</button>
+      <button class="tab" data-tab="journal" type="button">♡ Journal</button>
+      <button class="tab" data-tab="affirmations" type="button">✿ Affirmations</button>
+    </nav>
+
+    <section id="tasks" class="tab-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SMALL STEPS, SOFT STARTS</p>
+          <h2>Today's intentions</h2>
+          <p>Make it manageable. You don't have to do everything at once.</p>
+        </div>
+        <span class="date-chip" id="todayDate"></span>
+      </div>
+
+      <form id="taskForm" class="task-form">
+        <label class="sr-only" for="taskInput">Your next tiny step</label>
+        <input id="taskInput" type="text" maxlength="160"
+          placeholder="What's one tiny step you can take?" required>
+        <button type="submit" class="primary-button">+ Add task</button>
+      </form>
+
+      <div class="gentle-tip">
+        <span>☁</span>
+        <p><strong>A gentle reminder:</strong> Break a big task into a
+          small step. Starting for five minutes is enough.</p>
+      </div>
+
+      <div id="taskList" class="task-list"></div>
+      <p id="emptyTasks" class="empty-state">
+        Your list is a fresh start. Add one small thing you'd like to do. 🌿
+      </p>
+      <button id="clearCompleted" class="text-button" type="button">
+        Clear completed tasks
+      </button>
+    </section>
+
+    <section id="journal" class="tab-panel hidden">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A MOMENT WITH YOURSELF</p>
+          <h2>Your gratitude journal</h2>
+          <p>There is no perfect way to feel or write. Just begin.</p>
+        </div>
+        <span class="date-chip">Your safe space ♡</span>
+      </div>
+
+      <article class="prompt-card">
+        <span class="stat-icon">✧</span>
+        <p class="eyebrow">TODAY'S REFLECTION PROMPT</p>
+        <h3 id="journalPrompt">What is one thing about yourself
+          that you appreciate today?</h3>
+        <button id="newPrompt" class="text-button" type="button">
+          Give me another prompt ↗
+        </button>
+      </article>
+
+      <form id="journalForm" class="journal-form">
+        <label for="journalMood">How are you feeling today?</label>
+        <select id="journalMood">
+          <option value="Peaceful">🌿 Peaceful</option>
+          <option value="Happy">☀ Happy</option>
+          <option value="Hopeful">🌱 Hopeful</option>
+          <option value="Overwhelmed">☁ Overwhelmed</option>
+          <option value="Sad">🌧 Sad</option>
+          <option value="Anxious">🕊 Anxious</option>
+          <option value="Grateful">♡ Grateful</option>
+        </select>
+
+        <label for="journalText">Your thoughts and reflections</label>
+        <textarea id="journalText" rows="7" maxlength="10000"
+          placeholder="Today, I am grateful for..."></textarea>
+        <button class="primary-button" type="submit">Save reflection ♡</button>
+      </form>
+
+      <div class="section-heading history-heading">
+        <div>
+          <p class="eyebrow">LOOK HOW FAR YOU'VE COME</p>
+          <h2>Your reflection history</h2>
+        </div>
+      </div>
+      <div id="journalHistory" class="journal-history"></div>
+      <p id="emptyJournal" class="empty-state">
+        Your reflections will appear here when you save them.
+      </p>
+    </section>
+
+    <section id="affirmations" class="tab-panel hidden">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WORDS TO GROW BY</p>
+          <h2>Speak kindly to yourself</h2>
+          <p>You deserve the same kindness you offer others.</p>
+        </div>
+      </div>
+      <div id="affirmationGrid" class="affirmation-grid"></div>
+      <article class="prompt-card verse-card">
+        <p class="eyebrow">SCRIPTURE FOR THE JOURNEY</p>
+        <h3 id="verseText">For God gave us a spirit not of fear but of
+          power and love and self-control.</h3>
+        <p id="verseReference">2 Timothy 1:7</p>
+        <button id="newVerse" class="text-button" type="button">
+          Reflect on another verse ↗
+        </button>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p>Made with grace, rooted in growth. ✿</p>
+      <p>You are allowed to grow at your own pace.</p>
+      <small>Your entries stay in this browser unless you choose
+        to share them. See the privacy note in the project documentation.</small>
+    </footer>
+  </main>
+</body>
+</html>
